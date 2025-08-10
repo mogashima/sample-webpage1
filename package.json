@@ -1,0 +1,15 @@
+{
+  "name": "webpage1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass scss/main.scss css/main.css --style expanded",
+    "sass:watch": "sass --watch scss/main.scss css/main.css --style expanded"
+  },
+  "author": "Mineshima",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "sass": "^1.90.0"
+  }
+}

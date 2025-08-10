@@ -1,0 +1,293 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  color: #333;
+  background: #fff;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  background: #006e54;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+header .menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+header .menu-toggle span {
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+@media (max-width: 768px) {
+  header .menu-toggle {
+    display: flex;
+  }
+}
+
+.nav-menu {
+  background: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+}
+.nav-menu .container {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.nav-menu a {
+  padding: 1rem;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-menu a:hover {
+  color: #006e54;
+}
+@media (max-width: 768px) {
+  .nav-menu .container {
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+  }
+  .nav-menu.active .container {
+    max-height: 500px;
+    opacity: 1;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+  }
+  .nav-menu a {
+    display: block;
+    width: 100%;
+    border-top: 1px solid #ddd;
+  }
+}
+
+.section {
+  padding: 4rem 0;
+  background: #fff;
+  color: #333;
+}
+.section.about-us, .section.case-studies {
+  background: #f5f5f5;
+}
+.section.services, .section.informations, .section.careers {
+  background: #e9f0ef;
+}
+.section .section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #006e54;
+  text-align: center;
+}
+@media (min-width: 1100px) {
+  .section .section-description {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+.section .section-description p {
+  margin: 0 auto;
+  /* 横中央寄せ */
+  max-width: 1000px;
+  /* 必要に応じて幅制限 */
+}
+.section .company-info,
+.section .recruitment-list {
+  list-style: none;
+  margin-top: 1rem;
+  padding-left: 0;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.section .company-info li,
+.section .recruitment-list li {
+  padding: 0.4rem 0;
+  font-size: 1.1rem;
+}
+.section .company-info li strong,
+.section .recruitment-list li strong {
+  color: #006e54;
+}
+.section .services-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.section .services-list .service-item {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  flex: 1 1 280px;
+  min-width: 280px;
+}
+.section .services-list .service-item h3 {
+  margin-bottom: 1rem;
+  color: #006e54;
+}
+.section .services-list .service-item p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.4;
+}
+.section .case-item {
+  background: #fff;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.section .case-item h3 {
+  color: #006e54;
+  margin-bottom: 0.75rem;
+}
+.section .case-item p {
+  color: #444;
+  font-size: 1rem;
+}
+.section .informations-list {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.section .informations-list li {
+  list-style: none;
+  border-top-width: 2px;
+  border-top: 2px solid #ccc;
+  padding: 0 1em;
+}
+.section .informations-list li:last-child {
+  border-bottom: 2px solid #ccc;
+}
+.section .informations-list li:hover {
+  background: #d7e9e7;
+}
+.section .informations-list li span.list-arrow {
+  position: absolute;
+}
+.section .informations-list li span.list-arrow:before {
+  content: ">";
+  color: #006e54;
+  font-size: 1.5em;
+}
+.section .informations-list li .list-information {
+  padding: 1em 0;
+  display: flex;
+  align-items: stretch;
+  /* 高さを揃えるポイント */
+  gap: 20px;
+}
+.section .informations-list li .list-information .list-content {
+  margin: 0.5em 1.5em;
+  flex: 1;
+  /* 残りの幅を使う */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.section .informations-list li .list-information .list-content .list-title {
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+}
+.section .informations-list li .list-information .list-content .list-tags {
+  display: flex;
+  gap: 6px;
+  /* タグ同士の間隔 */
+  margin-top: 6px;
+}
+.section .informations-list li .list-information .list-content .list-tags .release-tag,
+.section .informations-list li .list-information .list-content .list-tags .news-tag,
+.section .informations-list li .list-information .list-content .list-tags .award-tag,
+.section .informations-list li .list-information .list-content .list-tags .event-tag {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #fff;
+  /* 文字色白 */
+  display: inline-block;
+}
+.section .informations-list li .list-information .list-content .list-tags .release-tag {
+  background-color: #4A90E2;
+  /* 落ち着いたブルー */
+}
+.section .informations-list li .list-information .list-content .list-tags .news-tag {
+  background-color: #9B9B9B;
+  /* グレイッシュトーン */
+}
+.section .informations-list li .list-information .list-content .list-tags .award-tag {
+  background-color: #F5A623;
+  /* 暖かみのあるオレンジ */
+}
+.section .informations-list li .list-information .list-content .list-tags .event-tag {
+  background-color: #50C878;
+  /* 明るめのエメラルドグリーン */
+}
+.section .informations-list li .list-information .list-icon {
+  flex: 0 0 80px;
+  /* 幅を固定（例：80px） */
+  display: flex;
+  align-items: center;
+  /* アイコンの縦位置を中央にする */
+  justify-content: center;
+  /* スマホ（768px以下）の場合、list-iconsを非表示 */
+}
+@media (max-width: 768px) {
+  .section .informations-list li .list-information .list-icon {
+    display: none;
+  }
+}
+
+.site-footer {
+  background: #f8f8f8;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/*# sourceMappingURL=main.css.map */

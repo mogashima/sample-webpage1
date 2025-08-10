@@ -1,0 +1,368 @@
+// ================================
+// 変数
+// ================================
+$main-color: #006e54;
+$text-color: #333;
+$bg-light: #f8f8f8;
+$max-width: 1100px;
+$max-description-width: 1000px;
+$max-content-width: 900px;
+$breakpoint-sp: 768px;
+
+// ================================
+// リセット
+// ================================
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Noto Sans JP", sans-serif;
+    color: $text-color;
+    background: #fff;
+    line-height: 1.6;
+}
+
+// ================================
+// 共通クラス
+// ================================
+.container {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+// ================================
+// ヘッダー
+// ================================
+header {
+    background: $main-color;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .menu-toggle {
+        display: none; // PCでは非表示
+        flex-direction: column;
+        justify-content: center;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        padding: 0;
+
+        span {
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+    }
+
+    @media (max-width: $breakpoint-sp) {
+        .menu-toggle {
+            display: flex; // スマホでは表示
+        }
+    }
+}
+
+// ================================
+// ナビゲーション
+// ================================
+.nav-menu {
+    background: $bg-light;
+    border-bottom: 1px solid #ddd;
+
+    .container {
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+    }
+
+    a {
+        padding: 1rem;
+        color: $text-color;
+        font-weight: 500;
+        transition: color 0.3s;
+
+        &:hover {
+            color: $main-color;
+        }
+    }
+
+    @media (max-width: $breakpoint-sp) {
+        .container {
+            flex-direction: column;
+            align-items: flex-start;
+            overflow: hidden; // アニメーションで高さ制御のため必須
+            max-height: 0; // 初期は非表示
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.4s ease;
+        }
+
+        &.active .container {
+            max-height: 500px; // 適宜、十分な高さに調整
+            opacity: 1;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            border-top: 1px solid #ddd;
+        }
+    }
+}
+
+// ================================
+// メイン
+// ================================
+.section {
+    padding: 4rem 0;
+    background: #fff;
+    color: $text-color;
+
+    &.about-us,
+    &.case-studies {
+        background: #f5f5f5;
+
+    }
+
+    &.services,
+    &.informations,
+    &.careers {
+        background: #e9f0ef;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: $main-color;
+        text-align: center;
+    }
+
+    .section-description {
+        @media (min-width: $max-width) {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+
+        p {
+            margin: 0 auto;
+            /* 横中央寄せ */
+            max-width: $max-description-width;
+            /* 必要に応じて幅制限 */
+        }
+
+    }
+
+    .company-info,
+    .recruitment-list {
+        list-style: none;
+        margin-top: 1rem;
+        padding-left: 0;
+        max-width: $max-content-width;
+        margin-left: auto;
+        margin-right: auto;
+
+        li {
+            padding: 0.4rem 0;
+            font-size: 1.1rem;
+
+            strong {
+                color: $main-color;
+            }
+        }
+    }
+
+    .services-list {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        max-width: $max-content-width;
+        margin: 0 auto;
+        flex-wrap: wrap;
+
+        .service-item {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+            flex: 1 1 280px;
+            min-width: 280px;
+
+            h3 {
+                margin-bottom: 1rem;
+                color: $main-color;
+            }
+
+            p {
+                font-size: 1rem;
+                color: #555;
+                line-height: 1.4;
+            }
+        }
+    }
+
+    .case-item {
+        background: #fff;
+        padding: 1.5rem 2rem;
+        margin-bottom: 1.5rem;
+        border-radius: 6px;
+        box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+        max-width: $max-content-width;
+        margin-left: auto;
+        margin-right: auto;
+
+        h3 {
+            color: $main-color;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            color: #444;
+            font-size: 1rem;
+        }
+    }
+
+    .informations-list {
+        max-width: $max-content-width;
+        margin: 0 auto;
+
+        li {
+            list-style: none;
+            border-top-width: 2px;
+            border-top: 2px solid #ccc;
+            padding: 0 1em;
+
+            &:last-child {
+                border-bottom: 2px solid #ccc;
+            }
+
+            &:hover {
+                background: #d7e9e7;
+            }
+
+            span.list-arrow {
+                position: absolute;
+
+                &:before {
+                    content: "\03e";
+                    color: #006e54;
+                    font-size: 1.5em;
+                }
+            }
+
+            .list-information {
+                padding: 1em 0;
+                display: flex;
+                align-items: stretch;
+                /* 高さを揃えるポイント */
+                gap: 20px;
+
+                .list-content {
+                    margin: 0.5em 1.5em;
+                    flex: 1;
+                    /* 残りの幅を使う */
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    .list-title {
+                        font-size: 1.1em;
+                        margin-bottom: 0.5em;
+                    }
+
+                    .list-tags {
+                        display: flex;
+                        gap: 6px;
+                        /* タグ同士の間隔 */
+                        margin-top: 6px;
+
+                        .release-tag,
+                        .news-tag,
+                        .award-tag,
+                        .event-tag {
+                            padding: 4px 8px;
+                            border-radius: 4px;
+                            font-size: 12px;
+                            color: #fff;
+                            /* 文字色白 */
+                            display: inline-block;
+                        }
+
+                        .release-tag {
+                            background-color: #4A90E2;
+                            /* 落ち着いたブルー */
+                        }
+
+                        .news-tag {
+                            background-color: #9B9B9B;
+                            /* グレイッシュトーン */
+                        }
+
+                        .award-tag {
+                            background-color: #F5A623;
+                            /* 暖かみのあるオレンジ */
+                        }
+
+                        .event-tag {
+                            background-color: #50C878;
+                            /* 明るめのエメラルドグリーン */
+                        }
+                    }
+                }
+
+                .list-icon {
+                    flex: 0 0 80px;
+                    /* 幅を固定（例：80px） */
+                    display: flex;
+                    align-items: center;
+                    /* アイコンの縦位置を中央にする */
+                    justify-content: center;
+
+                    /* スマホ（768px以下）の場合、list-iconsを非表示 */
+                    @media (max-width: $breakpoint-sp) {
+                        display: none;
+                    }
+                }
+            }
+
+
+
+        }
+
+    }
+}
+
+
+// ================================
+// フッター
+// ================================
+.site-footer {
+    background: $bg-light;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
